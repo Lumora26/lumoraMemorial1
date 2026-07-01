@@ -1,0 +1,117 @@
+/* ==========================================================================
+   ESTILOS GERAIS DO PORTAL E HEADER (memorial.css) [1]
+   ========================================================================== */
+.memorial-container {
+    max-width: 576px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 0 1.5rem;
+    position: relative;
+    z-index: 10;
+}
+
+.memorial-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.memorial-date {
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-blush);
+    margin-bottom: 0.75rem;
+}
+
+.profile-frame {
+    position: relative;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 0.25rem;
+    background: linear-gradient(to top right, var(--color-rose-gold), var(--color-blush));
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.25rem;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--color-white);
+    cursor: pointer;
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    color: var(--color-text-dark);
+}
+
+.profile-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.625;
+    max-width: 24rem;
+    margin-top: 1rem;
+    padding: 0 1.5rem;
+}
+
+.welcome-badge {
+    margin-top: 1.5rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 0.625rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-blush);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* SEÇÃO DA BIOGRAFIA */
+.story-section {
+    margin-top: 2rem;
+}
+
+.story-title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.5rem;
+}
+
+.story-text {
+    font-size: 0.75rem;
+    color: var(--color-text-dark);
+    line-height: 1.7;
+    font-weight: 300;
+    text-align: justify;
+}
+
+/* Rodapé do Memorial */
+.memorial-footer {
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 0.5625rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.625;
+}
+
+.discreet-text {
+    opacity: 0.75;
+}
