@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial de Maria Eduarda Santos</title>
+    
+    <!-- METATAGS DO ANIMAL -->
+    <meta name="description" content="Lumora - Memorial de lealdade da nossa amada Maria Eduarda">
+    <meta name="author" content="Lumora">
+    <meta name="theme-color" content="#FBFBFA">
+    
+    <!-- METATAGS OPEN GRAPH -->
+    <meta property="og:title" content="Memorial Digital • Maria Eduarda">
+    <meta property="og:description" content="Acesse nosso portal, reviva nossos momentos felizes e deixe um carinho no mural!">
+    <meta property="og:image" content="./../img/perfil.jpg">
+    <meta property="og:type" content="website">
+    
+    <link rel="shortcut icon" href="./../img/lumora/logolumora.png" type="image/x-icon">
+    
+    <!-- FONTES DO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <!-- IMPORTAÇÃO DE TODAS AS FOLHAS DE ESTILO EM CSS PURO (Sem Tailwind) -->
+    <link rel="stylesheet" href="./../css/style.css">
+    <link rel="stylesheet" href="./../css/galeria.css">
+    <link rel="stylesheet" href="./../css/lightbox.css">
+    <link rel="stylesheet" href="./../css/memorial.css">
+    <link rel="stylesheet" href="./../css/mural.css">
+</head>
+<body class="bg-light-theme pb-28">
+
+    <!-- CANVAS PARA CÉU ANIMADO (ESTRELAS & PARTICULAS FLUTUANTES) -->
+    <canvas id="starryCanvas"></canvas>
+
+    <!-- PORTAL PRINCIPAL -->
+    <main class="memorial-container">
+        
+        <!-- CABEÇALHO -->
+        <header class="memorial-header">
+            <span class="memorial-date">* 14/03/1945 &nbsp;•&nbsp; † 21/05/2024</span>
+            
+            <div class="profile-frame">
+                <!-- Foto Principal (Clicável para abrir no Lightbox) -->
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Maria Eduarda" class="profile-img" onclick="openLightbox(this.src)">
+            </div>
+            
+            <h2 class="profile-name font-serif">Maria Eduarda Santos</h2>
+            
+            <blockquote class="profile-quote font-serif">
+                "Aqueles que amamos nunca morrem, apenas partem antes de nós para semear o caminho de luz."
+            </blockquote>
+
+            <div class="welcome-badge">
+                ✨ Seja bem-vindo. Deixe sua homenagem de afeto abaixo.
+            </div>
+        </header>
+
+        <!-- SEÇÃO: NOSSA HOMENAGEM (BIOGRAFIA) -->
+        <section class="story-section">
+            <h2 class="story-title font-serif">Nossa Homenagem</h2>
+            <div class="story-text">
+                <p style="margin-bottom: 1rem;">
+                    Maria Eduarda, carinhosamente conhecida por todos como Dona Duda, viveu uma vida dedicada ao amor, à família e à arte de cultivar a paciência. Nascida no interior, mudou-se jovem para a cidade grande, onde construiu uma história rica em superações e laços inquebráveis.
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    Mãe de três filhos e avó de cinco netos, ela encontrava sua maior alegria ao redor da mesa de domingo, servindo suas receitas tradicionais e compartilhando histórias de um tempo mais simples. Seu jardim, sempre florido, era o reflexo de sua alma paciente e dedicada.
+                </p>
+                <p>
+                    Hoje, sua ausência física deixa uma saudade imensa, mas seu exemplo de resiliência, sorriso terno e palavras de conforto continuam vivos nos corações de todos os que tiveram o privilégio de caminhar ao seu lado.
+                </p>
+            </div>
+        </section>
+
+        <!-- GALERIA DE FOTOS -->
+        <section class="gallery-section">
+            <h2 class="story-title font-serif">Lembranças em Imagens</h2>
+            <div class="gallery-grid-2x2">
+                <!-- Foto 1 -->
+                <div class="gallery-item-2x2" onclick="openLightbox('https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=300&auto=format&fit=crop" alt="Lembrança 1">
+                </div>
+                <!-- Foto 2 -->
+                <div class="gallery-item-2x2" onclick="openLightbox('https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?q=80&w=600&auto=format&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?q=80&w=300&auto=format&fit=crop" alt="Lembrança 2">
+                </div>
+                <!-- Foto 3 -->
+                <div class="gallery-item-2x2" onclick="openLightbox('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=600&auto=format&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=300&auto=format&fit=crop" alt="Lembrança 3">
+                </div>
+                <!-- Foto 4 -->
+                <div class="gallery-item-2x2" onclick="openLightbox('https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?q=80&w=600&auto=format&fit=crop')">
+                    <img src="https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?q=80&w=300&auto=format&fit=crop" alt="Lembrança 4">
+                </div>
+            </div>
+        </section>
+
+        <!-- MURAL DE MENSAGENS AO VIVO (IGUAL DO THOR - COM FOTO E SENTIMENTOS) [1, 2] -->
+        <section class="mural-section">
+            <div class="mural-header">
+                <h3 class="mural-title font-serif">
+                    <span class="live-indicator">
+                        <span class="live-ping"></span>
+                        <span class="live-dot"></span>
+                    </span>
+                    Mural de Carinho
+                </h3>
+                <span class="mural-status">Deixe sua homenagem</span>
+            </div>
+
+            <!-- FORMULÁRIO DE ENVIO IMEDIATO -->
+            <div class="form-container glow-rose">
+                <form onsubmit="handleLiveSubmit(event)" class="mural-form">
+                    <div class="form-row">
+                        <div>
+                            <label class="form-label">Seu Nome</label>
+                            <input type="text" id="form_name" required class="input-field">
+                        </div>
+                        <div>
+                            <label class="form-label">Sentimento / Relação</label>
+                            <select id="form_relation" class="select-field">
+                                <option value="Saudade">Saudade 🥺</option>
+                                <option value="Amor">Amor Eterno ❤️</option>
+                                <option value="Gratidão">Gratidão ✨</option>
+                                <option value="Doçura">Doçura/Paz 🕊️</option>
+                                <option value="Respeito">Respeito 🕯️</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Sua Mensagem de Apoio</label>
+                        <textarea id="form_text" rows="2" class="textarea-field" placeholder="Escreva uma mensagem carinhosa ou uma lembrança fofa..."></textarea>
+                    </div>
+
+                    <!-- Captura de câmera ou galeria do celular -->
+                    <div>
+                        <label class="form-label">Registrar Lembrança (Foto)</label>
+                        <div class="file-uploader">
+                            <input type="file" id="form_photo" accept="image/*" class="file-input" onchange="previewImage(event)">
+                            <div id="photo_placeholder" class="file-placeholder">
+                                <span>📸</span>
+                                <span>Anexar Foto de Lembrança</span>
+                            </div>
+                        </div>
+                        <div id="preview_container" class="preview-container hidden">
+                            <img id="image_preview" src="" class="preview-img">
+                            <button type="button" onclick="removePreview()" class="btn-remove-photo">&times;</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit uppercase tracking-wide">
+                        Fixar no Mural de Lembranças
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Feed de Mensagens Dinâmico e Persistente (Firebase) -->
+            <div id="muralFeed" class="mural-feed">
+                <!-- Notas carregadas por JS em Tempo Real -->
+            </div>
+        </section>
+
+        <!-- RODAPÉ DISCRETO -->
+        <footer class="memorial-footer">
+            <p>Lumora • Recordações Interativas de Eventos</p>
+            <p class="discreet-text">Escanear para reviver as memórias de carinho</p>
+        </footer>
+        
+    </main>
+
+    <!-- LIGHTBOX (VISUALIZADOR DE FOTOS GERAL) -->
+    <div id="lightbox" class="lightbox-overlay hidden" onclick="closeLightbox()">
+        <button class="btn-close-lightbox">&times;</button>
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Ampliação">
+    </div>
+
+    <!-- SCRIPT DE COMPORTAMENTO EM JAVASCRIPT MODULAR (IMPORTANTÍSSIMO: type="module") -->
+    <script type="module" src="./../js/main.js"></script>
+
+</body>
+</html>

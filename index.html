@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial de Maria Eduarda Santos</title>
+    
+    <!-- METATAGS DE OTIMIZAÇÃO E RESPEITO -->
+    <meta name="description" content="Lumora - Tributo de saudade e amor à nossa eterna Maria Eduarda">
+    <meta name="author" content="Lumora">
+    <meta name="theme-color" content="#FBFBFA">
+    <link rel="shortcut icon" href="assets/img/lumora/logolumora.png" type="image/x-icon">
+    
+    <!-- FONTES DO GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- LINK PARA A FOLHA DE ESTILOS CENTRAL EM CSS PURO -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-light-theme">
+
+    <!-- CANVAS PARA CÉU ANIMADO (ESTRELAS & PARTICULAS FLUTUANTES) -->
+    <canvas id="starryCanvas"></canvas>
+
+    <!-- MAIN: ENVOLTÓRIO DA TELA DE ABERTURA -->
+    <main class="welcome-wrapper">
+        <div id="welcomeScreen" class="welcome-screen">
+            <div class="welcome-container">
+                <!-- Tag Superior do Logo -->
+                <span class="welcome-tag">Memorial Digital • Lumora</span>
+                
+                <!-- Foto de Capa na Entrada -->
+                <div class="welcome-photo-frame" style="margin: 0 auto;">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Maria Eduarda" class="welcome-photo">
+                </div>
+
+                <!-- Nome -->
+                <h1 class="welcome-title font-serif">Maria Eduarda Santos</h1>
+                
+                <!-- Texto de Apresentação -->
+                <p class="welcome-text">
+                    Tributo de saudade e amor infinito à nossa eterna e querida Dona Duda.
+                </p>
+                
+                <!-- Redirecionamento para a página interna do memorial -->
+                <div class="welcome-btn-container">
+                    <a href="./pages/memorial.html" class="btn-primary uppercase tracking-wide">Acessar Memorial</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- RODAPÉ DA ENTRADA -->
+    <footer class="discreet-footer">
+        <p>&copy; MDL • Memorial Digital Lumora</p>
+    </footer>
+
+    <!-- SCRIPT DO CÉU ANIMADO EXCLUSIVO DA TELA DE ABERTURA -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const canvas = document.getElementById('starryCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            const stars = [];
+            const sparks = [];
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            // Cria estrelas estáticas cintilantes
+            for (let i = 0; i < 50; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    size: Math.random() * 1.5,
+                    alpha: Math.random(),
+                    speed: 0.01 + Math.random() * 0.02
+                });
+            }
+
+            // Função para gerar fagulhas flutuantes suaves
+            function createSpark() {
+                if (sparks.length < 15) {
+                    sparks.push({
+                        x: Math.random() * width,
+                        y: height + 10,
+                        size: 2 + Math.random() * 3,
+                        alpha: 0.1 + Math.random() * 0.4,
+                        speed: 0.4 + Math.random() * 0.8,
+                        wiggle: Math.random() * 0.01,
+                        wiggleOffset: Math.random() * 100
+                    });
+                }
+            }
+
+            // Loop de renderização fluida (60 FPS)
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+
+                // Desenha estrelas
+                stars.forEach(star => {
+                    ctx.fillStyle = `rgba(110, 126, 101, ${star.alpha})`; // Cor Sage Green
+                    ctx.beginPath();
+                    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    star.alpha += star.speed;
+                    if (star.alpha > 0.8 || star.alpha < 0.1) {
+                        star.speed = -star.speed;
+                    }
+                });
+
+                // Cria novas fagulhas de forma suave
+                if (Math.random() < 0.03) createSpark();
+
+                // Desenha fagulhas flutuantes
+                sparks.forEach((spark, index) => {
+                    ctx.save();
+                    ctx.globalAlpha = spark.alpha;
+                    ctx.fillStyle = "#6E7E65";
+                    ctx.beginPath();
+                    const xPos = spark.x + Math.sin(Date.now() * spark.wiggle + spark.wiggleOffset) * 8;
+                    ctx.arc(xPos, spark.y, spark.size, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+
+                    spark.y -= spark.speed;
+
+                    // Deleta fagulha se passar do topo da tela
+                    if (spark.y < -30) {
+                        sparks.splice(index, 1);
+                    }
+                });
+
+                requestAnimationFrame(animate);
+            }
+            animate();
+        });
+    </script>
+</body>
+</html>
